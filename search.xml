@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Hello World</title>
+    <url>/2025/07/25/hello-world/</url>
+    <content><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Quick StartCreate a new post$ hexo new &quot;My New Post&quot;
+
+More info: Writing
+Run server$ hexo server
+
+More info: Server
+Generate static files$ hexo generate
+
+More info: Generating
+Deploy to remote sites$ hexo deploy
+
+More info: Deployment
+]]></content>
+  </entry>
+  <entry>
+    <title>Hexo+Github博客搭建</title>
+    <url>/2025/07/25/my-first-blog/</url>
+    <content><![CDATA[本教程大致基于文档https://www.cnblogs.com/huanhao/p/hexobase.html在此基础上进行更新
+1. 安装需要的依赖软件1.1 安装node.js下载链接: https://nodejs.cn
+选择下载安装
+选择Windows安装包
+下载好安装包后直接安装，无特殊配置
+1.2 安装git下载链接：https://git-scm.com
+选择VScode
+勾选覆写
+无特殊说明部分均按next
+1.3 验证nodejs是否安装成功搜索并打开git Bash
+在出现的终端输入
+node -v
+输出node的版本号
+输入
+npm -v
+输出npm的版本号
+如果没有版本号，检查环境变量
+
+
+查看是否有nodejs的安装路径，没有的话点击新建，然后确定
+重新在git bash上查询，还是无版本号请重新安装
+1.4 安装cnpm在nodejs的安装目录上新建global和cache文件夹，会提示需要授权在刚才的git bash上输入 
+npm config set prefix &quot;global文件的路径&quot;
+npm config set cache &quot;cache文件的路径&quot;
+npm install -g cnpm
+将global文件路径添加到系统Path变量中，参考上文
+重新进入git bash
+验证cnpm是否安装成功
+git bash输入
+cnpm -v
+
+如果无法输出版本号，尝试将global的环境变量上移
+2. 安装Hexo并初始化博客2.1 安装Hexogit bash输入
+cnpm install hexo-cli -g
+
+2.2 初始化博客关闭打开的git bash窗口
+在你想要的位置新建blog文件夹
+进入该文件夹，右键，点击显示更多选项，点击Open git Bash here
+git bash输入
+hexo init
+cnpm install
+hexo s
+输出有一段网址
+复制到浏览器打开
+这就是本地预览
+3. 更换Hexo主题Hexo所有的主题链接：https://hexo.io/themes/
+搜索next并点击
+往下翻有安装方法
+git bash输入
+npm install hexo-theme-next
+git clone https://github.com/next-theme/hexo-theme-next themes/next
+
+打开blog文件夹下的-config.yml文件将theme改为next
+刷新4000网址
+如果出现乱码git bash输入
+npm install hexo-util --save
+cd themes/next
+git pull origin master
+cd ../..
+hexo clean &amp;&amp; hexo s
+刷新4000网址
+4. 配置主题我们需要认识两个文件
+站点配置文件指的是blog目录下的_config.yml
+主题配置文件指的是某个主题下的_config.yml如next文件夹下的_config.yml
+4.1 设置语言我们打开站点配置文件将language的配置改成zh-CN，然后保存文件
+4.2 scheme改成双栏打开主题配置文件，scheme改成双栏，也就是需要修改成Pisces
+刷新4000网址
+5.创建文章git bash输入
+hexo new &quot;文章名称&quot;
+
+如创建一个名为”我的第一个博客“的文章
+hexo new &quot;my-first-blog&quot;
+
+此时在blog\source_posts可以找到my-first-blog.md，这就是你创建的文件每次生成的文章都固定在该目录下
+6. 编辑文章将创建的md文件用VScode打开  
+VScode安装插件，右击该md文件，点击打开预览，即可实时获取markdown文件的实时预览效果
+用markdown语法编写文章
+7. 部署到GitHub上，实现点击链接跳转博客拥有一个GitHub账号
+在GitHub上创建一个仓库仓库名必须是用户名 + .github.io然后勾选初始化README
+获取密钥git bash输入
+ssh-keygen -t rsa -C “your_email@youremail.com“
+cat ~/.ssh/id_rsa.pub
+会输出你的秘钥，我们复制输出信息就行了
+然后回到GitHub，点击头像，点击Settings–SSH·····–New SSH Key粘贴你复制的秘钥
+git bash输入
+ssh -T git@github.com
+如果出现报错，重新输入，改变端口访问
+ssh -T -p 443 git@ssh.github.com
+
+会提示你下面这个，输入yes回车就行了Are you sure you want to continue connecting (yes&#x2F;no&#x2F;[fingerprint])? 
+进入github.io仓库，点击settings，点击pages，改为master，点击save
+点击Visit site，该网址就是你的个人博客链接
+8. 创建文章并部署到GitHub上，实现点击链接浏览总结创建文章  
+在VScode上进行编写浏览，保存
+在blog目录下打开的git bash上输入
+hexo g -d
+上传到github  
+刷新个人链接
+]]></content>
+  </entry>
+</search>
